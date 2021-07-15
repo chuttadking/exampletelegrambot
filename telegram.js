@@ -1,3 +1,5 @@
+//for clarifications/ doubts, please contact me on Discord @rdvdr#2205 :)
+
 const { Telegraf, Telegram, Context } = require('telegraf');
 
 const bot = new Telegraf('Enter Bot Token');
