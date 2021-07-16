@@ -448,7 +448,7 @@ bot.command('rps', (ctx) => {
 });
 
 bot.command('bye', (ctx) => {
-    ctx.reply('cya later' + ctx.from.first_name + '! have a good day :)')
-})
+    ctx.reply('cya later ' + ctx.from.first_name + '! have a good day :)')
+});
 
 bot.launch();
