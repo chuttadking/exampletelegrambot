@@ -110,7 +110,7 @@ bot.command('w', (ctx) => {
     }
 
     if(newconvert==undefined||!newconvert){ 
-        ctx.reply('please mention a location'); 
+        ctx.reply('please mention a location!'); 
     }
     else{
         weather.find({search: newconvert, degreeType: `C`}, function (error, result) {
