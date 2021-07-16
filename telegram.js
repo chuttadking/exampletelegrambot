@@ -1,4 +1,4 @@
-//for clarifications/ doubts, please contact me on Discord @rdvdr#2205 :)
+//for clarifications or doubts, please contact me on Discord @rdvdr#2205 :)
 
 const { Telegraf, Telegram, Context } = require('telegraf');
 
@@ -82,12 +82,12 @@ bot.command('weather', (ctx) => {
             var current = result[0].current;
             var location = result[0].location;
 
-            if(result === undefined || result.length == '0' || !result || result==undefined){
+            if(result === undefined || result.length == '0' || !result){
                 ctx.reply('invalid location!');
             }
 
             ctx.reply(
-                `Weather forecast for ${current.observationpoint} \n` +
+                `Weather Forecast for ${current.observationpoint} \n` +
                 `Time Zone: UTC ${location.timezone} \n` +
                 `Temperature: ${current.temperature}°C \n` +
                 `Wind: ${current.winddisplay} \n` +
@@ -99,7 +99,7 @@ bot.command('weather', (ctx) => {
 
 bot.command('w', (ctx) => {
     let args=ctx.message.text.toLowerCase();
-    let convert = Array.from(args).toString().split(',').join('');// /weather 
+    let convert = Array.from(args).toString().split(',').join('');
     let x = convert.length;
     var i;
     for(i=0; i<4; i++){
@@ -117,12 +117,12 @@ bot.command('w', (ctx) => {
             var current = result[0].current;
             var location = result[0].location;
 
-            if(result === undefined || result.length == '0' || !result || result==undefined){
+            if(result === undefined || result.length == '0' || !result){
                 ctx.reply('invalid location!');
             }
 
             ctx.reply(
-                `Weather forecast for ${current.observationpoint} \n` +
+                `Weather Forecast for ${current.observationpoint} \n` +
                 `Time Zone: UTC ${location.timezone} \n` +
                 `Temperature: ${current.temperature}°C \n` +
                 `Wind: ${current.winddisplay} \n` +
