@@ -16,7 +16,7 @@ bot.start((ctx) => {
 });
 
 bot.help((ctx) => {
-    ctx.reply('I can perform the following cmds: \n1. /catto \n2. /doggo \n3. /hi \n4. /dice \n5. /poll \n6. /weather or /w \n7. /textflip or /tp \n8. /aniquote or /aq\n9. /anime \n10. /anipic');
+    ctx.reply('I can perform the following cmds: \n1. /catto \n2. /doggo \n3. /hi \n4. /dice \n5. /poll \n6. /weather or /w \n7. /textflip or /tp \n8. /aniquote or /aq\n9. /anime \n10. /anipic \n11. /rps');
 });
 
 bot.command('hi', (ctx) => {
