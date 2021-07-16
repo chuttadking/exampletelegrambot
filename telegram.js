@@ -63,18 +63,18 @@ bot.command('poll', (ctx) => {
 });
 
 bot.command('weather', (ctx) => {
-    let args=ctx.message.text;
+    let args=ctx.message.text.toLowerCase();
     let convert = Array.from(args).toString().split(',').join('');// /weather 
     let x = convert.length;
     var i;
     for(i=0; i<9; i++){
         if(convert[i] == ' '){
             console.log('the space is located at position ' + i);
-            var newconvert = convert.substr(i, (x-i));
+            var newconvert = convert.substr((i+1), (x-i));
         }
     }
 
-    if(newconvert=='undefined'||!newconvert){ 
+    if(newconvert==undefined||!newconvert){ 
         ctx.reply('please mention a location'); 
     }
     else{
@@ -82,7 +82,7 @@ bot.command('weather', (ctx) => {
             var current = result[0].current;
             var location = result[0].location;
 
-            if(result === undefined || result.length == '0' || !result || result=='undefined'){
+            if(result === undefined || result.length == '0' || !result || result==undefined){
                 ctx.reply('invalid location!');
             }
 
@@ -98,18 +98,18 @@ bot.command('weather', (ctx) => {
 });
 
 bot.command('w', (ctx) => {
-    let args=ctx.message.text;
+    let args=ctx.message.text.toLowerCase();
     let convert = Array.from(args).toString().split(',').join('');// /weather 
     let x = convert.length;
     var i;
     for(i=0; i<4; i++){
         if(convert[i] == ' '){
             console.log('the space is located at position ' + i);
-            var newconvert = convert.substr(i, (x-i));
+            var newconvert = convert.substr((i+1), (x-i));
         }
     }
 
-    if(newconvert=='undefined'||!newconvert){ 
+    if(newconvert==undefined||!newconvert){ 
         ctx.reply('please mention a location'); 
     }
     else{
@@ -117,7 +117,7 @@ bot.command('w', (ctx) => {
             var current = result[0].current;
             var location = result[0].location;
 
-            if(result === undefined || result.length == '0' || !result || result=='undefined'){
+            if(result === undefined || result.length == '0' || !result || result==undefined){
                 ctx.reply('invalid location!');
             }
 
@@ -144,7 +144,7 @@ bot.command('calc', (ctx) => {
         }
     }
 
-    if(newconvert=='undefined'||!newconvert){ 
+    if(newconvert==undefined||!newconvert){ 
         ctx.reply('please enter input'); 
     }
     else{
@@ -166,7 +166,7 @@ bot.command('textflip', (ctx) => {
         }
     }
 
-    if(newconvert=='undefined'||!newconvert){ 
+    if(newconvert==undefined||!newconvert){ 
         ctx.reply('please enter the text you would like me to flip'); 
     }
     else {
@@ -187,7 +187,7 @@ bot.command('tp', (ctx) => {
         }
     }
 
-    if(newconvert=='undefined'||!newconvert){ 
+    if(newconvert==undefined||!newconvert){ 
         ctx.reply('please enter the text you would like me to flip'); 
     }
     else {
@@ -235,7 +235,7 @@ bot.command('aq', (ctx) => {
 });
 
 bot.command('anime', (ctx) => {
-    let args=ctx.message.text;
+    let args=ctx.message.text.toLowerCase();
     let convert = Array.from(args).toString().split(',').join('');
     let x = convert.length;
     var i;
@@ -246,7 +246,7 @@ bot.command('anime', (ctx) => {
         }
     }
 
-    if(newconvert=='undefined'||!newconvert){ 
+    if(newconvert==undefined||!newconvert){ 
         ctx.reply('please mention an anime you would like me to get info on!'); 
     }
     else {
@@ -315,6 +315,7 @@ bot.command('anipic', (ctx) => {
             .catch((err) => {
                 console.error(err);
             }); 
+
     } else if(randPIC==5){
         let status; 
             fetch('https://api.waifu.pics/sfw/poke')
@@ -331,9 +332,119 @@ bot.command('anipic', (ctx) => {
             .catch((err) => {
                 console.error(err);
             }); 
+            
     } else {
         ctx.reply('sike.');
     }
-})
+});
+
+bot.command('rps', (ctx) => {
+    let args=ctx.message.text.toLowerCase();
+    let convert = Array.from(args).toString().split(',').join('');
+    let x = convert.length;
+    var i;
+    for(i=0; i<5; i++){
+        if(convert[i] == ' '){
+            console.log('the space is located at position ' + i);
+            var newconvert = convert.substr(i, (x-i));
+        }
+    }
+    console.log('Users choice: ' + newconvert);
+
+    if(newconvert==undefined||!newconvert){ 
+        ctx.reply('please choose rock/paper/scissors!'); 
+    }
+    else {
+        let obj1 = ' rock';
+        let obj2 = ' paper';
+        let obj3 = ' scissor';
+        let symbol1 = ' 🤜';
+        let symbol2 = ' 🖐️';
+        let symbol3 = ' ✌️';
+
+        let randomChoice = Math.floor(Math.random()*3);
+        console.log('rps output is: ' + randomChoice);
+
+        var symbol;
+        var output;
+
+        switch(randomChoice)
+        {
+            case 0: output = obj1;
+                    symbol = symbol1;
+                    break;
+            case 1: output = obj2;
+                    symbol = symbol2;
+                    break;
+            case 2: output = obj3;
+                    symbol = symbol3;
+                    break;
+
+            default: output = 'null';
+        };
+        console.log('final:' + output);
+
+        if(newconvert==output){
+            ctx.reply(
+                'You chose:' + symbol + '\n' +
+                'I chose:' + symbol
+            );
+            ctx.reply('It is a draw!');
+        }
+
+        else if((newconvert==obj1)&&(randomChoice=1)){
+            ctx.reply(
+                'You chose:' + symbol1 + '\n' +
+                'I chose:' + symbol 
+            );
+            ctx.reply('I win!');
+        }
+
+        else if((newconvert==obj1)&&(randomChoice=2)){
+            ctx.reply(
+                'You chose:' + symbol1 + '\n' +
+                'I chose:' + symbol 
+            );
+            ctx.reply('You win! Congrats!');
+        }
+
+        else if((newconvert==obj2)&&(randomChoice=2)){
+            ctx.reply(
+                'You chose:' + symbol2  + '\n' +
+                'I chose:' + symbol 
+            );
+            ctx.reply('I win!');
+        }
+
+        else if((newconvert==obj2)&&(randomChoice=0)){
+            ctx.reply(
+                'You chose:' + symbol2  + '\n' +
+                'I chose:' + symbol 
+            );
+            ctx.reply('You win! Congrats!');
+        }
+
+        else if((newconvert==obj3)&&(randomChoice=0)){
+            ctx.reply(
+                'You chose:' + symbol3  + '\n' +
+                'I chose:' + symbol 
+            );
+            ctx.reply('I win!');
+        }
+
+        else if((newconvert==obj3)&&(randomChoice=1)){
+            ctx.reply(
+                'You chose:' + symbol3  + '\n' +
+                'I chose:' + symbol 
+            );
+            ctx.reply('You win! Congrats!');
+        }
+
+        else {
+            ctx.reply('invalid input');
+        }
+
+    }
+});
 
 bot.launch();
