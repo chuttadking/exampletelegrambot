@@ -343,17 +343,19 @@ bot.command('rps', (ctx) => {
     let convert = Array.from(args).toString().split(',').join('');
     let x = convert.length;
     var i;
+
     for(i=0; i<5; i++){
         if(convert[i] == ' '){
             console.log('the space is located at position ' + i);
             var newconvert = convert.substr(i, (x-i));
         }
     }
-    console.log('Users choice: ' + newconvert);
+    console.log('Users choice:' + newconvert);
 
     if(newconvert==undefined||!newconvert){ 
-        ctx.reply('please choose rock/paper/scissors!'); 
+        ctx.reply('please choose rock/paper/scissor!'); 
     }
+    
     else {
         let obj1 = ' rock';
         let obj2 = ' paper';
@@ -363,7 +365,7 @@ bot.command('rps', (ctx) => {
         let symbol3 = ' ✌️';
 
         let randomChoice = Math.floor(Math.random()*3);
-        console.log('rps output is: ' + randomChoice);
+        console.log('number generated: ' + randomChoice);
 
         var symbol;
         var output;
@@ -382,7 +384,7 @@ bot.command('rps', (ctx) => {
 
             default: output = 'null';
         };
-        console.log('final:' + output);
+        console.log('bot:' + output);
 
         if(newconvert==output){
             ctx.reply(
@@ -392,7 +394,7 @@ bot.command('rps', (ctx) => {
             ctx.reply('It is a draw!');
         }
 
-        else if((newconvert==obj1)&&(randomChoice=1)){
+        else if((newconvert==obj1)&&(output==obj2)){
             ctx.reply(
                 'You chose:' + symbol1 + '\n' +
                 'I chose:' + symbol 
@@ -400,7 +402,7 @@ bot.command('rps', (ctx) => {
             ctx.reply('I win!');
         }
 
-        else if((newconvert==obj1)&&(randomChoice=2)){
+        else if((newconvert==obj1)&&(output==obj3)){
             ctx.reply(
                 'You chose:' + symbol1 + '\n' +
                 'I chose:' + symbol 
@@ -408,7 +410,7 @@ bot.command('rps', (ctx) => {
             ctx.reply('You win! Congrats!');
         }
 
-        else if((newconvert==obj2)&&(randomChoice=2)){
+        else if((newconvert==obj2)&&(output==obj3)){
             ctx.reply(
                 'You chose:' + symbol2  + '\n' +
                 'I chose:' + symbol 
@@ -416,7 +418,7 @@ bot.command('rps', (ctx) => {
             ctx.reply('I win!');
         }
 
-        else if((newconvert==obj2)&&(randomChoice=0)){
+        else if((newconvert==obj2)&&(output==obj1)){
             ctx.reply(
                 'You chose:' + symbol2  + '\n' +
                 'I chose:' + symbol 
@@ -424,7 +426,7 @@ bot.command('rps', (ctx) => {
             ctx.reply('You win! Congrats!');
         }
 
-        else if((newconvert==obj3)&&(randomChoice=0)){
+        else if((newconvert==obj3)&&(output==obj1)){
             ctx.reply(
                 'You chose:' + symbol3  + '\n' +
                 'I chose:' + symbol 
@@ -432,7 +434,7 @@ bot.command('rps', (ctx) => {
             ctx.reply('I win!');
         }
 
-        else if((newconvert==obj3)&&(randomChoice=1)){
+        else if((newconvert==obj3)&&(output==obj2)){
             ctx.reply(
                 'You chose:' + symbol3  + '\n' +
                 'I chose:' + symbol 
