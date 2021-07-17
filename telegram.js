@@ -1,4 +1,5 @@
 //for clarifications or doubts, please contact me on Discord @rdvdr#2205 :)
+//excellent bot fam!
 
 const { Telegraf, Telegram, Context } = require('telegraf');
 
